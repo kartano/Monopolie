@@ -1,0 +1,402 @@
+Monopolie 0.9.8b
+--No date yet
+
+SM:  Major code overhaul.  A few fundamental changes.
+
+Fixed/Added
+  + Selecting "unowned properties" not written, but will no longer
+    cause the game to crash
+  + Abstracted out human/CPU players to their own subclasses, based
+    on an interface class "claIPlayer"
+  + Removed use of arrays from property classes
+  + Improved AI functions - should be easier to work on now.
+    All CPU AI functions are in a seperate modCPU module.
+  + TurnManager has been moved into a "PlayerManager" class.
+  + Fixed bug where players could mortgage a CPU player property.
+  + Added trading functionality
+  + Overhaul of logging system - much more informative
+  + Improved logging functionality
+  + CPU players will mortgage unimproved property when they are short of cash
+  + CPU players will improve properties when they own full sets and can afford to
+  + "House rules" advanced options now actually work in the game
+
+Behind the scenes:
+  + Tidied up some code indentation.
+  + Tidied up some IF statements.
+  + Removed some (well ... a lot of) redundant code.
+  + Removed recursive use of "PlayersTurn" to prevent stack overflows
+    while testing CPU AI module.
+  + Tidied up some dialogs.  Should be able to call a "run" method
+    for the dialogs, rather than having "form.show" and "unload form"
+    all through the code.
+  + Began moving property & rent details into an INI file.
+  + Removed use of confusing Arrays for Properties (and added confusing
+    use of classes instead :)  )
+  + Major code tidying - cleaned up indexes, code structures, etc.
+  + Improved Victory condition checks
+    
+Code queries:
+  + frmHousing.GetPropertyNumbers looks like a duplicate of
+    claProperties.GetPropertyNumbers.  Was there a reason this was
+    done that way?
+  + PlayerCoords has an array called "MoveIndices".  Can't we just
+    take the board location the player needs and use mod 40 to find
+    the correct square?
+  + Token coords is a 0 based array, but is declared up to a size
+    of 40.  This makes 41 squares (I.E:  the GO coords are in there
+    twice).  Was there a reason for this?
+    
+Monopoie 0.9.8
+--No Date Yet (In Development)
+
+Fixed/Added
+  +Reworked GUI to have SideMenu rather than on the bottom uses the control from VBAccelerator
+  +Interface is now MDI rather than SDI
+  +Updated Comm/Chance so it autocloses
+  +Put tooltips for property name, owner
+  +Rolldice unavailable until a human player is up
+  +The cmdbutton does not show 10% for the tax screen as it did in 0.9.7--(My bad)
+  +Comm/Chance executes when you close form rather than in the background.
+  +Sound now uses API!!!!!
+  +$50 charge after in jail 3 times w/o rolling doubles
+  +Added ability to check if user is bankrupt and if true pass over them to next player 
+  +If player does not have enough money allows them to mortgage, trade, or declare bankruptcy
+  +Added frmAbout
+  +Added frmTrade
+  +Added frmOption
+  +Delete Players at New Game Setup
+  +New Game now cancels with grace when user presses the cancel button
+  +You can begin a new game w/o closing Monopolie
+  +The Chance Card now takes out 2 times railroad rent
+  +Chance advance to Util now works--but see below
+  +Double Rent if player lands on an undeveloped property that is part of a monopoly
+  +You can no longer mortgage a property if other properties in the same color group have been developed
+  +Save File Works it Converts the Player Info, Property Info to hex then writes it to the file 
+    This is to prevent casual editing...we propably need to perform some kind of checksum?
+  +Computer will declare bankrupt if it has no money to pay rent support needs to be added so that it will mortgage property when available--Part of the AI
+  +New game resets pieces to start position.
+  +Reformatted the Rules--Saved as RTF
+  +Added frmRules
+  +Fixed bug where you got to go again when getting out of jail by rolling doubles
+  +Fixed bug when in Jail it rolled again to see how many spaces to move
+  +Fixed bug that allowed Negative Values--(Finally I think!?!)
+  +Added Comments to SourceCode--Hopefully I have explained what I am doing with the code ;)
+    Not Finished yet but will continue to add them--Tried to be acurate when labeling the author if unknown left blank, Authors, Please fill in the Procedures you helped code.
+
+Known Bugs:
+  +SM:  If the CPU player buys a property, the player can instantly mortgage it
+        while the dialog is still active.
+  +Not 10x rent when Chance Card advance to Utility
+  +When a Property is mortgaged you can buy or sell a house that does not exist
+  +Buy Houses on Properties with Two Properties not updating buttons Correctly
+  +Card does not dissappear after paying rent to other player.
+  +Game crashes when attempting to see unowned properties.
+
+ToDo:
+  +SM:  Double-clicks on frmViewTrade should display property details
+  +SM:  claTrade.execute needs to be written
+  +SM:  Consensus - should Money be LONG, or INTEGER?
+  +Would like to convert some of the Arrays to UserDefinedTyes
+  +AI
+  +Cap Houses owned at 32 and Hotels at 12 per the rules
+  +Bankruptcy gives properties to other player/bank
+  +Non-Standard Rules-Free Parking
+  +Network/Internet Gameplay--TCP/IP
+  +Internet Update
+  +Ability to mortgage when attempting to buy property but you do not have enough money
+  +OptionsForm for Non-Standard Gameplay
+  +ToolTips to contain Rent?
+  +Trading
+  +Track Players Assets/Monopolies
+    
+--------------------------------------------------------------------------------
+
+Monopolie 0.9.7a
+2002-09-17
+Monopolie has a very nice GUI touchup. It is smaller and can now fit on computers with lower screen resolutions.
+Todo:
++Get out of jail with $50
++Mortgaging
++Manual Pay button
++End Turn Button
++Save and Open function
++16x16, 32x32, and 64x64 icon for Monopolie
+Bugs:
++Passing GO gives you doubles, always, but you don't get to roll again.
++Some card(s) are not cascaded in the correct order.
+--------------------------------------------------------------------------------
+
+Monopolie 0.9.6j
+2002-09-09
++Fixed bug where the flag that the get out of jail card was used was not reset properly after it was used.
++Fixed the case where the chance card says to pay the owner of the railroad twice its worth.
+--------------------------------------------------------------------------------
+
+Monopolie 0.9.6i
+2002-08-27
++Fixed frmProperty to prevent case where Buy button was incorrectly disabled.
++Added logging of seed value for Randomize statement
++Fixed case where the frmProperty was not showing the correct owner of the property
++Renamed the SetupForm subroutine to ShowForm in the frmProperty form.
++Changed the font of the Property owner label and centered label.
+--------------------------------------------------------------------------------
+
+Monopolie 0.9.6h
+2002-08-26
++Fixed problem with movement when player drew "Go Back 3 Spaces" chance card
++Added optional Direction parameter to DoMovePlayerRoutine(), MovePlayer(),MovePlayer2(), and MovePlayerToken() in order to fix "Go Back 3 Spaces"
++Modified MovePlayerToken() to handle moving token based on value of the newDirection parameter
+--------------------------------------------------------------------------------
+
+Monopolie 0.9.6g
+2002-08-26
++Fixed problem with Go Directly To Jail movement
++Fixed scores not being updated when new game started.
++Fixed problem where New Game menu item caused program to end (was a variablename typo that was not caught since Option Explicit is not used in frmMain.)
++Fixed a case in Community Chest that would have always taken $50 from Player 1and given $50 to player 2.
++Adjusted frmChance to be exact same size as frmComm
++Added labels to frmChance, frmComm that show who drew the card. Added code inChance() and CommunityChest() routines to set labels.
++Added timer and code to frmChance and frmComm so that form can be auto-closedafter it has been displayed when the computer player drew a card.
+--------------------------------------------------------------------------------
+
+Monopolie 0.9.6f
+2002-08-25
++Fixed problem with passing Go! in the MovePlayerToken routine
++Fixed problem where code in PlayerRollCompleted was executed more than once due to recursive execution of the doMovePlayerRoutine routine caused by the code forChance and Community Chest cards. This caused one of the players to lose a turn.
++Fixed code that caused the Property form to be hidden after the Housing formhad been closed.
+--------------------------------------------------------------------------------
+
+Monopolie 0.9.6e
+2002-08-25
+-Removed all timer controls and routines pertaining to old turn management code
++claTurnManager.cls - a player queue, used by TurnSequencer timer event
++TurnSequencer timer on frmMain - manages player turns
++PlayerRollCompleted routine in frmMain - called after player's turn is overit enables the TurnSequencer timer to give control to next player
++RollTheDice routine - consolidates the rolldice_Click() and Timercomp_Timer()routines into one routine that handles computer and human player dice rolls
++PlayerGetsJailCard routine in frmMain handles giving Get Out of Jail Free cards to players.  Computer can now have and use Get Out of Jail Free cards.
++GoDirectlyToJail routine handles sending players to jail, and also handles thecases where a player has a Get Out of Jail Free card and uses it.
++cmdCards_Click routine modified to handle new Get Out of Jail Free card vars
++mainloop.bas has a Main() routine that preloads frmCards and frmComm priorto displaying frmSetup
++Players now go to jail if they roll doubles three times in a row, they get outof jail if they roll doubles, if they do not roll doubles by their third turnin jail they are charged $50 and released.  In both cases they move the numberof spaces rolled when they tried for the last time to get out of jail.
++Activated the movement routine that moves player token one space at a time.
++Speed combo box on frmSetup now sets a variable that causes TurnSequencertimer event to pause before initiating the computer's turn.
++Added a flashing red box shape under roll dice button.  This appears as a redborder that flashes when the roll dice button is activated for human player.-Removed all instances of assigning values to PlayerPos(PlayerNum) except for in doMovePlayerRoutine (which calls player movement routine and must set it)and in GoDirectlyToJail (which must set it as it sends player to jail withoutcalling DoMovePlayerRoutine.)  Everywhere else it occurs in the programPlayerPos(PlayerNum) is only used for testing the player's position.
++Make sure the player is on the property that is being checked
+--------------------------------------------------------------------------------
+
+Monopolie 0.9.6d
+2002-08-24
++new InitPlayerCoords() routine in PlayerCoords.bas (new module)
++new InitRentValues() routine in PropertyVals.bas (new module)
++added calls to InitPlayerCoords() and InitRentValues() in frmMain_Load
++new MovePlayerToken routine in playerCoords.bas used to simplify theMovePlayer() and MovePlayer2() routines in frmMain
++added DisplayProperyForm to simplify MovePlayer() routine in frmMain
++added PlayerNum and Location parameters to MovePlayer() and MovePlayer2()
++modified DoMovePlayerRoutine() to handle Destination parameter to be passedto MovePlayer() and MovePlayer2()
++replaced unneeded hardcoded location values with Location parameter in bothMovePlayer() and MovePlayer2()-removed statements regarding frmProperty.cmdBuy button from MovePlayer()
++removed all HideCards() calls in MovePlayer() except for one at beginning-removed global variable moveto (now obsolete) and all refs to it in frmMain
++replaced MovePlayer() call in rolldice_Click() with DoMovePlayerRoutine()
++replaced MovePlayer2() call in Timercomp_Timer() with DoMovePlayerRoutine()
++added logging of Chance and Community Chest cards to the CommunityChest() andChance() routines
++fixed problem in Chance() where Advance to Reading Railroad resulted in getting$200 for passing Go! twice
+--------------------------------------------------------------------------------
+
+Monopolie 0.9.6c
+2002-08-23
++Simplified rent transactions
++Created consolidated Chance routine that handles human and computer player-Removed compchance() routine from frmMain-Removed Chance logic code from frmChance
++Created consolidated Community Chest routine that handles human and computerplayer-Removed comchest() routine from frmMain-Removed Community Chest logic code from frmComm
++Fixed Railroad rents
++Fixed Utility rents
++Computer no longer buys property when it does not have enough money.
++Added Property owner label to frmProperty
+--------------------------------------------------------------------------------
+
+Monopolie 0.9.6b
+2002-08-23
++Simplified transaction code
++Changes to frmSetup, Next button not visible until a player name is entered.Finish button not available until player token selection frame is visible.
++Added some global arrays to lay the groundwork for multiple player version
++Added claCards.cls - will handle the Chance and Community Chest card piles.claCards is not yet used but will be soon.
+--------------------------------------------------------------------------------
+
+Monopolie 0.9.6a
+2002-08-22
++Added logging of dice rolls, player location, and money changes.  Log isthe file MONO-LOG.TXT.  Will be in same directory as source when debugging,and in same directory as EXE when running the EXE
++Added routine InitLocationNames() to Globals.bas
++Added routine GetLocName to Globals.bas
+--------------------------------------------------------------------------------
+
+Monopolie 0.9.6
+2002-08-22
+CODE CHANGES
++frmProperty.OLE1.DoVerb placed into subroutine Play_Kaching_Sound Alloccurrances of frmProperty.OLE1.DoVerb have been replaced withPlay_Kaching_Sound
++added owner() - global integer array - this replaces all occurrances offrmMain.Text(#).Text for storage of property owner values-removed the Text(#) textbox controls from frmMain as they have beensupplanted by the owner() array.
++added PlayerMoney() - global integer array - this replaces all occurrancesof frmMain.player1money.Caption and frmMain.player2money.Caption
++added subroutine ChangePlayerMoney(PlayerNum, Amount) - this replaces alloccurrances of calculations that involved frmMain.player1money.Caption andfrmMain.player2money.Caption
++added subroutine PassedGoEvent() - this replaces all of the pairs offrmMain.passedgo.Visible = True : frmMain.timerpassgo.Enabled = Truestatements
++added global variable "moveto" - this replaces all occurrances offrmMain.moveto.Text, frmMain.moveto, and moveto.Text
++added parentheses around comparisons using "moveto"
++Fixed all cases where a string was being assigned to "moveto".
++Fixed all cases where "moveto" was being compared to a string.
++added PlayerPos() - global integer array - replaces all occurances offrmMain.Player#.tag, Val(frmMain.Player#.tag), Player#.tag, andVal(Player#.tag)
++added parentheses around comparisons using PlayerPos(#)
++Fixed all cases where a string was being assigned to PlayerPos(#)
++Fixed all cases where PlayerPos(#) was being compared to a string.
++added Player1_InJail and Player2_InJail integers to frmMain
++changed all references to textboxes p1jail and p2jail into Player1_InJailand Player2_InJail-removed textboxes p1jail and 2jail from frmMain
++added doubles and doubles2 global booleans - replaces all occurrances oftextboxes Doubles.Text and Doubles2.Text-removed textboxes Doubles and Doubles2 from frmMain-removed unused code for Command1_Click() from frmMain-removed "Command1.Enabled = false" statements comp() routine in frmMain-removed Command1 button from frmMainBUGS
++FIXED rounding in calculation of 10% of total worth in cmd10_Click() routineof frmincometax. Rounds up to nearest dollar.
++FIXED transaction captions for rents due on railroads in MovePlayer2 routineof frmMain. Was showing $2 instead of $25.
+--------------------------------------------------------------------------------
+
+Monopolie 0.9.5
+2002-07-14
+Fixed:
++"advance to nearest railroad" bug
++"Computer get's player's money" bug
++P(27) was changed to P(28) (my mistake, sorry. -James)
++rent of vermont is 6, not 8
++Spelling error when computer chooses thimble. frMain frmMain
++Housing form updates when it becomes the active window, not just when itloads.
++Changed the if's in frmMain.MovePlayer2() to an if..else block
++Added Select Case block to frmMain.MovePlayer() (removed GoTo's)
++Added Select Case block to frmMain.computercomm() (removed GoTo's)
++Removed more speghetti code [some remains in frmMain.rolldice_Click() andTimercomp_Timer()]Added:
++Player cannot buy a property if she cannot afford it
++Added luxury tax
++Income tax-player has option to pay $200 or 10%-computer always pays $200
++List of property costs in frmPrices control array Cost(n)
++frmMain.isProperty(int) as Boolean
++frmMain.isBuildableProperty(int) as Boolean
+ToDo:
++You don't get paid for landing on Go (sometimes)-When I got a chance card, I was paid for GO, but didn't go there visually
++Pay double when travelling to a railroad via chance card
++Have player pay current value of frmPrices.P(n). Then, when computer buyshouses, it will get the current price. this is in frmMain.MovePlayer()
++Add full support for utilities (currently only charges 4*roll)
++Create a listing of board positions (x, y) for each property
++Bankruptcy (allow the game to end)
++Pay increasing prices for R.R.'s when more than one is owned
++Help file
++Add code to display get out of jail free cards
++Mortgaging
++Multiplayer support
++Intelligent AI (purchase properties)
++Trading
++Clean up card forms
+--------------------------------------------------------------------------------
+
+Monopolie 0.9.4
+2002-07-12
+Fixed:
++Unable to view more than the first property in frmCardsAdded:
++Computer chooses random playing piece (added a while ago - about 0.9.2)
+ToDo:
++Remove some spaghetti code (Sorry, I missed some in frmMain)
++Help file
++Get out of jail free cards
++Add code for get out of jail free cards
++Mortgaging
++Multiplayer support
++Intelligent AI (purchase properties)
++Trading
++Income Tax square
++Luxury Tax square
++Clean up card forms
++Change all image formats to png
+--------------------------------------------------------------------------------
+
+Monopolie 0.9.3
+2002-07-12
+Fixed:
++unable to view properties by clicking
++no remaining GoTo's or large if-only blocks (no more spaghetti code)
+Added:
++get out of jail free cards to frmCards. Not functional
+ToDo:
++Add code for get out of jail free cards
++Mortgaging
++Multiplayer support
++Intelligent AI (purchase properties)
++Trading
++Income Tax square
++Luxury Tax square
++Clean up card forms
++Change all image formats to png
+--------------------------------------------------------------------------------
+
+Monopolie 0.9.2
+2002-06-29
+Fixed:
++changed many control name to control arrays. For example, frmMain.image04became frmMain.image(4). This allows for dynamic access to form controls. Ichanged controls in every form except frmHousing.
++Changed many blocks of code using 'spaghetti code' full of GoTo's.
++Added Select Case statements and intelligent for loops.
+ToDo:
++Some spaghetti code remains.
+--------------------------------------------------------------------------------
+
+Monopolie 0.9.1
+2002-06-28
+Fixed the AI so it pays you when it lands on your property. Undid somemistakes in 0.9.0 that set some properties to be owned by player1 by default.
+--------------------------------------------------------------------------------
+
+Monopolie 0.9.0
+2002-06-25
+Added FULL support for buying and selling homes. Computer pays player forlanding on properties (a few things missing). All forms renamed withdescriptive names.
+--------------------------------------------------------------------------------
+
+Monopolie 0.8
+2002-06-23
+Added partial house and hotel support. You can buy them, but you cannot usethem, and you do not need a monopoly to buy them-the rules will be appliedlater.
+--------------------------------------------------------------------------------
+
+Monopolie 0.7
+2002-06-22
+I added support for Community Chest. The size of the executable file has greatly increased, so your going to need about 12 megabytes of ram just for this game.
+--------------------------------------------------------------------------------
+
+Monopolie 0.6
+2002-06-21
+Support for computer-jail, and I added chance card support. Also made a GUIproperty interface, which is easier to use. I added Community Chest cards,but I haven't coded them yet.
+--------------------------------------------------------------------------------
+
+Monopolie 0.5
+2002-06-20
+Doubles support, and Jail support. There is no support for computer-jail, butthere is for a regular player. Double support is for computer and human. Alsoadded a new board with the Monopolie logo instead of the Monopoly logo.
+--------------------------------------------------------------------------------
+
+Monopolie 0.4
+2002-06-20
+Added a User-Friendly Interface, and a Cards Button.
+--------------------------------------------------------------------------------
+
+Monopolie 0.3
+2002-06-20
+I have added a nice new game setup wizard, where you can pick the speed, yourname, and your piece (shoe, car, etc.)
+--------------------------------------------------------------------------------
+
+Monopolie 0.2
+2002-06-20
+Added Player 2 Support (Computer only). It is still in the experiment stagesand should not be played with in a real game.
+--------------------------------------------------------------------------------
+
+Monopolie 0.1 delta
+2002-06-19
+I added the ability to purchase cards and get money from passing GO. I alsoadded a sound effect (cash register) when you make a transaction.
+--------------------------------------------------------------------------------
+
+Monopolie 0.1 gamma
+2002-06-19
+Added cards, if you click on a card, you can see the details of the specificcard.
+--------------------------------------------------------------------------------
+
+Monopolie 0.1 beta
+2002-06-19
+I Renamed some of the pictures to their names and I added dice. Added a roledice button which allows you to roll both dice and it automatically movesyour piece.
+--------------------------------------------------------------------------------
+
+Monopolie 0.1 alpha
+2002-06-19
+I have started programming Monopolie, I made the board and the pieces. 
+You can move the pieces to any of the forty slots available.
+--------------------------------------------------------------------------------

@@ -1,0 +1,253 @@
+Type=Exe
+Reference=*\G{00020430-0000-0000-C000-000000000046}#2.0#0#..\..\..\WINDOWS\System32\stdole2.tlb#OLE Automation
+Object={831FDD16-0C5C-11D2-A9FC-0000F8754DA1}#2.0#0; MSCOMCTL.OCX
+Form=frmMain.frm
+Form=frmProperty.frm
+Form=frmSetup.frm
+Form=frmCards.frm
+Form=frmDrawCard.frm
+Form=frmHousing.frm
+Form=frmIncomeTax.frm
+Module=Globals; Globals.bas
+Class=claBasicLogFile; claBasicLogFile.cls
+Class=claCards; claCards.cls
+Module=PlayerCoords; PlayerCoords.bas
+Module=MainLoop; MainLoop.bas
+Form=frmDebug.frm
+Module=mMsgbox; mMsgbox.bas
+UserControl=GroupBox.ctl
+Module=XPTest; XPTest.bas
+Form=frmTrade.frm
+Form=frmOptions.frm
+Class=cFileDialog; cFileDialog.cls
+Form=mdiMonopoly.frm
+Object={77EBD0B1-871A-4AD1-951A-26AEFE783111}#2.0#0; vbalExpBar6.ocx
+RelatedDoc=..\doc\changelog.txt
+RelatedDoc=..\doc\license.txt
+RelatedDoc=..\doc\readme.txt
+RelatedDoc=..\doc\rules.txt
+Form=frmRules.frm
+Object={3B7C8863-D78F-101B-B9B5-04021C009402}#1.2#0; RICHTX32.OCX
+Form=frmAbout.frm
+Module=modSound; modSound.bas
+Module=modUtils; modUtils.bas
+Module=modCPU; modCPU.bas
+Class=claTrade; claTrade.cls
+Class=claIPlayer; claIPlayer.cls
+Class=claHumanPlayer; claHumanPlayer.cls
+Class=claCPUPlayer; claCPUPlayer.cls
+Module=modPlayerUtils; modPlayerUtils.bas
+Class=claPlayers; claPlayers.cls
+Form=frmViewTrade.frm
+Class=claProperties; claProperties.cls
+Class=claIProperty; claIProperty.cls
+Class=claRealEstate; claRealEstate.cls
+Class=claUtility; claUtility.cls
+Class=claStation; claStation.cls
+Module=modINIUtils; modINIUtils.bas
+Form=frmLogSettings.frm
+ResFile32="XP.Manifest.Res"
+IconForm="frmMain"
+Startup="Sub Main"
+HelpFile=""
+Title="Monopolie"
+ExeName32="Monopolie.exe"
+Command32="/Debug"
+Name="Monpolie"
+HelpContextID="0"
+CompatibleMode="0"
+MajorVer=0
+MinorVer=9
+RevisionVer=8
+AutoIncrementVer=0
+ServerSupportFiles=0
+VersionCompanyName="."
+CompilationType=0
+OptimizationType=0
+FavorPentiumPro(tm)=0
+CodeViewDebugInfo=0
+NoAliasing=0
+BoundsCheck=0
+OverflowCheck=0
+FlPointCheck=0
+FDIVCheck=0
+UnroundedFP=0
+StartMode=0
+Unattended=0
+Retained=0
+ThreadPerObject=0
+MaxNumberOfThreads=1
+DebugStartupOption=0
+
+[MS Transaction Server]
+AutoRefresh=1
+
+[TaskList]
+Num=19
+
+[TASK1]
+Description=Trading
+Status=0
+Priority=2
+
+[TASK2]
+Description=Logging/Textbox
+Status=0
+Priority=1
+
+[TASK3]
+Description=Computer Player
+Status=0
+Priority=2
+Comment=Mortgage Property Smart Decision
+
+[TASK4]
+Description=Network Play
+Status=0
+Priority=0
+
+[TASK5]
+Description=Options Dialogbox
+Status=0
+Priority=0
+Comment=For Adjusting Rules
+AssignedTo=
+
+[TASK6]
+Description=Internet Update
+Status=0
+Priority=0
+
+[TASK7]
+Description=Error Handler
+Status=0
+Priority=1
+
+[TASK8]
+Description=Code Cleanup
+Status=0
+Priority=0
+
+[TASK9]
+Description=Language Packs
+Status=0
+Priority=0
+
+[TASK10]
+Description=Free Parking
+Status=0
+Priority=1
+Comment=Not a standard rule, must have option to turn on/off
+
+[TASK11]
+Description=Mortgage Property
+Status=0
+Priority=1
+Comment=Mortgage Property when attempting to buy another, in order to give you more money.
+
+[TASK12]
+Description=Track Players Monopolies
+Status=0
+Priority=0
+
+[TASK13]
+Description=Track Players Total Assets
+Status=0
+Priority=0
+
+[TASK14]
+Description=Tooltip for Rent?
+Status=0
+Priority=0
+
+[TASK15]
+Description=Bankrupt gives property away
+Status=0
+Priority=1
+
+[TASK16]
+Description=MovePlayerToken
+Status=0
+Priority=2
+Comment=Not current player use token name or playernumber
+
+[TASK17]
+Description=frmMain
+Status=0
+Priority=0
+Comment=Resize to fill frmMonopoly
+
+[TASK18]
+Description=32 Houses 12 Hotels
+Status=0
+Priority=0
+Comment=Max allowed during Game Play Show Amount in Game Frame
+
+[TASK19]
+Description=Amount of Properties Owned
+Status=0
+Priority=1
+Comment=Player by Player
+
+[TASK20]
+Description=
+Status=
+Priority=
+AssignedTo=
+Comment=
+
+[TASK21]
+Description=
+Status=
+Priority=
+AssignedTo=
+Comment=
+
+[TASK22]
+Description=
+Status=
+Priority=
+AssignedTo=
+Comment=
+
+[TASK23]
+Description=
+Status=
+Priority=
+AssignedTo=
+Comment=
+
+[TASK24]
+Description=
+Status=
+Priority=
+AssignedTo=
+Comment=
+
+[TASK25]
+Description=
+Status=
+Priority=
+AssignedTo=
+Comment=
+
+[TASK26]
+Description=
+Status=
+Priority=
+AssignedTo=
+Comment=
+
+[TASK27]
+Description=
+Status=
+Priority=
+AssignedTo=
+Comment=
+
+[TASK28]
+Description=
+Status=
+Priority=
+AssignedTo=
+Comment=
